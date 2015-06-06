@@ -1,0 +1,59 @@
+<!doctype html>
+<html ng-app="npm-plugin-browser">
+
+<head>
+    <title>esformatter plugin registry</title>
+    <meta name="description" content="Discover esformatter plugins">
+    <meta name="keywords" content="esformatter,plugins,build,plugin,search">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+
+    <!-- build:css css/app.css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- endbuild -->
+
+    <link href="https://fonts.googleapis.com/css?family=Grand+Hotel|Roboto+Slab:400,300" rel="stylesheet">
+
+    <!-- META -->
+    <meta property="og:title" content="esformatter plugin registry">
+    <meta property="og:url" content="http://esformatterjs.com/plugins">
+    <meta property="og:description" content="Discover esformatter plugins">
+
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" href="./opensearch.xml" />
+</head>
+
+<body ng-controller="PluginListCtrl" class="good-font">
+    <nav class="fixed-title" role="navigation">
+        <a class="logo" href="http://esformatterjs.com/" role="banner">esformatter</a>
+        <input ng-change="limit=15" type="search" role="search" class="ng-cloak good-font plugin-search" placeholder="Search {{ (data.length }} plugins..." ng-model="search" autofocus>
+    </nav>
+
+    <section class="ng-cloak plugin-list-container" ng-init="limit=20" infinite-scroll="limit=limit+25" role="main">
+        <ul class="plugin-list" ng-show="data" role="list">
+            <li class="no-results" ng-hide="(data | filter:search).length">No results found</li>
+
+            <li role="listitem" class="plugin" ng-repeat="plugin in data | filter:search | limitTo:limit track by $index">
+                <a ng-href="https://npmjs.org/package/{{plugin.name}}/" target="_blank" title="Install" class="title" ng-bind="plugin.name"></a>
+                <div class="description" ng-bind="plugin.description"></div>
+                <div class="more-info">
+                    <div class="tags">
+                        <a ng-repeat="keyword in plugin.keywords track by $index" ng-href="http://npmsearch.com/?q=keywords:{{keyword}}" target="_blank" ng-bind="keyword"></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <!-- build:js js/vendor.js -->
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script src="../node_modules/ng-infinite-scroll/build/ng-infinite-scroll.min.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js js/app.js -->
+    <script src="scripts/module.js"></script>
+    <script src="scripts/controller/pluginList.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>
