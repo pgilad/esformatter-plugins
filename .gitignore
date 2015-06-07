@@ -16,6 +16,7 @@ build
 .grunt
 
 node_modules
+.publish
 bower_components
 public
 dist
