@@ -25,7 +25,7 @@
 <body ng-controller="PluginListCtrl" class="good-font">
     <nav class="fixed-title" role="navigation">
         <a class="logo" href="http://esformatterjs.com/" role="banner">esformatter</a>
-        <input ng-change="limit=15" type="search" role="search" class="ng-cloak good-font plugin-search" placeholder="Search {{ (data.length }} plugins..." ng-model="search" autofocus>
+        <input ng-change="limit=15" type="search" role="search" class="ng-cloak good-font plugin-search" placeholder="Search {{ data.length }} plugins..." ng-model="search" autofocus>
     </nav>
 
     <section class="ng-cloak plugin-list-container" ng-init="limit=20" infinite-scroll="limit=limit+25" role="main">

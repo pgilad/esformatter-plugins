@@ -7,7 +7,6 @@
   "repository": "pgilad/esformatter-plugins",
   "devDependencies": {
     "autoprefixer-core": "^5.2.0",
-    "bower": "^1.3.12",
     "del": "^1.2.0",
     "ecstatic": "^0.8.0",
     "gulp": "^3.9.0",

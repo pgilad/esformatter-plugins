@@ -13,23 +13,24 @@ var livereloadport = 35729;
 var serverport = 5000;
 
 gulp.task('build', ['clean'], function () {
-    var ourScripts = 'scripts/**/*.js';
+    var scripts = 'scripts/**/*.js';
+    var css = '*.css';
     var assets = plugins.useref.assets();
 
     return gulp.src('src/index.html')
         .pipe(assets)
-        .pipe(plugins.if(ourScripts, plugins.ngAnnotate()))
-        .pipe(plugins.if(ourScripts, plugins.uglify({
+        .pipe(plugins.if(scripts, plugins.ngAnnotate()))
+        .pipe(plugins.if(false, plugins.uglify({
             mangle: false,
             preserveComments: saveLicense
         })))
-        .pipe(plugins.if('*.css', plugins.postcss([
+        .pipe(plugins.if(css, plugins.postcss([
             autoprefixer({
                 browsers: ['last 3 versions', 'ie >= 8', '> 1%', 'Safari >= 6'],
                 cascade: false
             })
         ])))
-        .pipe(plugins.if('*.css', plugins.minifyCss({
+        .pipe(plugins.if(css, plugins.minifyCss({
             rebase: false,
             aggressiveMerging: false
         })))
@@ -42,7 +43,6 @@ gulp.task('build', ['clean'], function () {
 gulp.task('assets', ['clean'], function () {
     return gulp.src([
             'src/favicon.ico',
-            'src/logo.svg',
             'src/opensearch.xml',
             'src/README.md'
         ], {
