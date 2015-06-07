@@ -1,4 +1,4 @@
-esformatter-plugins
+# esformatter-plugins
 > Simple client-side app to browse and search esformatter plugins
 
 This app is a simple client-side app that allows one to browse and search esformatter plugins.
@@ -31,4 +31,4 @@ Most of this project is shamelessly copied from [gulp-plugins](https://github.co
 
 ## License
 
-MIT
+MIT ©[Gilad Peleg](http://giladpeleg.com)
