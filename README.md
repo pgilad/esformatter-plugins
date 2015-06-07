@@ -19,7 +19,7 @@ Several tasks are available from gulp for development and deployment:
 
 - `gulp`: Builds the project on the master branch
 - `gulp deploy`: Builds the project for production and deploys by pushing to the `gh-pages` branch.
-- `gulp serve`: Start a web server serving by default at `localhost:5000`
+- `gulp serve`: Start a web server serving by default at `http://localhost:5000`
 
 ## Contributing
 

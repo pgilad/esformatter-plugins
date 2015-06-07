@@ -69,16 +69,22 @@ angular.module('npm-plugin-browser').controller('PluginListCtrl', function ($sco
         return results.sort(sortBy(byRating, byName));
     }
 
+    function setInitialSearch() {
+        if (angular.isString(($location.search()).q)) {
+            $scope.search = ($location.search()).q;
+        }
+    }
+
     makeRequest(0, initialFetchSize)
         .then(function (response) {
             $scope.data = sortResults(response.data.results);
-            return makeRequest(initialFetchSize, response.data.total);
-        })
-        .then(function (response) {
-            var allItems = $scope.data.concat(response.data.results);
-            $scope.data = sortResults(allItems);
-            if (angular.isString(($location.search()).q)) {
-                $scope.search = ($location.search()).q;
+            if ($scope.data.length < initialFetchSize) {
+                return null;
             }
-        });
+            return makeRequest(initialFetchSize, response.data.total).then(function (response) {
+                var allItems = $scope.data.concat(response.data.results);
+                $scope.data = sortResults(allItems);
+            });
+        })
+        .then(setInitialSearch);
 });

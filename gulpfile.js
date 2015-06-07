@@ -20,7 +20,7 @@ gulp.task('build', ['clean'], function () {
     return gulp.src('src/index.html')
         .pipe(assets)
         .pipe(plugins.if(scripts, plugins.ngAnnotate()))
-        .pipe(plugins.if(false, plugins.uglify({
+        .pipe(plugins.if(scripts, plugins.uglify({
             mangle: false,
             preserveComments: saveLicense
         })))
@@ -43,7 +43,6 @@ gulp.task('build', ['clean'], function () {
 gulp.task('assets', ['clean'], function () {
     return gulp.src([
             'src/favicon.ico',
-            'src/opensearch.xml',
             'src/README.md'
         ], {
             base: 'src'
