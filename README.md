@@ -10,7 +10,14 @@ Built with [AngularJS](http://angularjs.org) and [gulp](http://gulpjs.com/)
 ## Install
 
 ```sh
+# clone repository
 $ git clone git@github.com:pgilad/esformatter-plugins.git
+
+# install dependencies
+$ npm install
+
+# install global gulp
+$ npm install --global gulp
 ```
 
 ## Development and deployment
