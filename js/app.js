@@ -1,5 +1,9 @@
 'use strict';
 
+angular.module('npm-plugin-browser', ['infinite-scroll']);
+
+'use strict';
+
 angular.module('npm-plugin-browser').controller('PluginListCtrl', function ($scope, $http, $location) {
     var fields = ['name', 'keywords', 'rating', 'description', 'author', 'modified', 'homepage', 'version'];
     var keywords = ['keywords:esformatter-plugin'];
